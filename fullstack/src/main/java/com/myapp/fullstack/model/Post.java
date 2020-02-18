@@ -16,17 +16,22 @@ public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@NotBlank
 	@Column
 	private String title;
+	
 	@Lob
 	@NotEmpty
 	@Column
 	private String content;
+	
 	@Column
 	private Instant createdOn;
+	
 	@Column
 	private Instant updatedOn;
+	
 	@NotBlank
 	@Column
 	private String username;

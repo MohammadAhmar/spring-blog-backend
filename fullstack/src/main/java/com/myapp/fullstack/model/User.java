@@ -11,10 +11,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@Column
-	private String userName;
+	private String username;
+	
 	@Column
 	private String password;
+	
 	@Column
 	private String email;
 	
@@ -25,10 +28,10 @@ public class User {
 		this.id = id;
 	}
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.username = userName;
 	}
 	public String getPassword() {
 		return password;

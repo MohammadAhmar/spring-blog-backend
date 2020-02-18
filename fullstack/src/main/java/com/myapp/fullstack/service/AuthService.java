@@ -12,6 +12,7 @@ import com.myapp.fullstack.dto.LoginRequest;
 import com.myapp.fullstack.dto.RegisterRequest;
 import com.myapp.fullstack.model.User;
 import com.myapp.fullstack.repository.UserRepository;
+import com.myapp.fullstack.security.JwtProvider;
 
 @Service
 public class AuthService {
@@ -45,6 +46,11 @@ public class AuthService {
 				loginRequest.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		return jwtProvider.generateToken(authentication);
+	}
+
+	public org.springframework.security.core.userdetails.User getCurrentUser() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
