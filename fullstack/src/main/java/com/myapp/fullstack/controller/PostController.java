@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myapp.fullstack.dto.PostDto;
+import com.myapp.fullstack.model.Post;
 import com.myapp.fullstack.service.PostService;
 
 @RestController
@@ -29,12 +30,12 @@ public class PostController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<PostDto>> showAllPosts() {
+    public ResponseEntity<List<Post>> showAllPosts() {
         return new ResponseEntity<>(postService.showAllPosts(), HttpStatus.OK);
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<PostDto> getSinglePost(@PathVariable @RequestBody Long id) {
-        return new ResponseEntity<>(postService.readSinglePost(id), HttpStatus.OK);
+    public ResponseEntity<Post> getSinglePost(@PathVariable Long id) {
+        return new ResponseEntity(postService.readSinglePost(id), HttpStatus.OK);
     }
 }

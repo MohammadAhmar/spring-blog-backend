@@ -1,5 +1,7 @@
 package com.myapp.fullstack.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -48,9 +50,12 @@ public class AuthService {
 		return jwtProvider.generateToken(authentication);
 	}
 
-	public org.springframework.security.core.userdetails.User getCurrentUser() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Optional<org.springframework.security.core.userdetails.User> getCurrentUser() {
+        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.
+                getContext().getAuthentication().getPrincipal();
+        return Optional.of(principal);
+    }
+
+	
 
 }
