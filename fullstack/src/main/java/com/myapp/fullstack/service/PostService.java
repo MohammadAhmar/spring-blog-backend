@@ -36,7 +36,10 @@ public class PostService {
     public List<Post> showAllPosts() {
         List<Post> posts = new ArrayList<Post>();
         posts = postRepository.findAll();
+        if(posts.size() >= 1) {
         return posts;
+        } else
+        	return null;
     }
 	
 	public Post readSinglePost(Long id) {
