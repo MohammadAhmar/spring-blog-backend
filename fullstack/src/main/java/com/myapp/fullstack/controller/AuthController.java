@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.myapp.fullstack.dto.AuthResponse;
 import com.myapp.fullstack.dto.LoginRequest;
 import com.myapp.fullstack.dto.RegisterRequest;
 import com.myapp.fullstack.model.User;
@@ -28,7 +29,7 @@ public class AuthController {
 		}
 		
 		@PostMapping("/login")
-		public String login(@RequestBody LoginRequest loginRequest) {
+		public AuthResponse login(@RequestBody LoginRequest loginRequest) {
 			return authService.login(loginRequest);
 		}
 }

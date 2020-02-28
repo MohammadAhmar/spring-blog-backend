@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.myapp.fullstack.dto.AuthResponse;
 import com.myapp.fullstack.dto.LoginRequest;
 import com.myapp.fullstack.dto.RegisterRequest;
 import com.myapp.fullstack.model.User;
@@ -43,11 +44,13 @@ public class AuthService {
 		return passwordEncoder.encode(password);
 	}
 
-	public String login(LoginRequest loginRequest) {
+	public AuthResponse login(LoginRequest loginRequest) {
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), 
 				loginRequest.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		return jwtProvider.generateToken(authentication);
+		String authToken = jwtProvider.generateToken(authentication);
+		return new AuthResponse(authToken,loginRequest.getUsername());
+		
 	}
 
 	public Optional<org.springframework.security.core.userdetails.User> getCurrentUser() {

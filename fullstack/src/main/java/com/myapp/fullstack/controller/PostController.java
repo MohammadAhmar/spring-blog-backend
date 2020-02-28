@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.myapp.fullstack.dto.PostDto;
 import com.myapp.fullstack.model.Post;
 import com.myapp.fullstack.service.PostService;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/posts/")
 public class PostController {
